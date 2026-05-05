@@ -11,15 +11,16 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "latest",
-    "@vitejs/plugin-react": "latest",
-    "vite": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "lucide-react": "latest",
+    "dotenv": "latest",
     "express": "latest",
-    "dotenv": "latest"
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "vite": "^8.0.10"
+  },
   "engines": {
     "node": "20.x"
   }
