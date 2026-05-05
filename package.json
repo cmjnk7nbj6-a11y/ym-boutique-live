@@ -1,0 +1,26 @@
+{
+  "name": "ym-boutique-live-v15",
+  "version": "15.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server/dev-server.js",
+    "vite": "vite --host 0.0.0.0 --port 3000",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 4173"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "latest",
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "lucide-react": "latest",
+    "express": "latest",
+    "dotenv": "latest"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "20.x"
+  }
+}
