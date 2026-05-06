@@ -427,34 +427,23 @@ function Admin({ inventory, setInventory, orders, unlocked, setUnlocked, adminLo
   const credentialsOk = () => email.trim().toLowerCase() === ADMIN_EMAIL.toLowerCase() && password === ADMIN_PASSWORD;
 
   async function startLogin() {
-    if (!credentialsOk()) return alert('Wrong email or password');
+  const cleanEmail = email.trim().toLowerCase();
 
-    if (!ADMIN_REQUIRE_2FA) {
-      setUnlocked(true);
-      log(`Admin login: ${email.trim()} (2FA disabled)`);
-      return;
-    }
+  if (
+    cleanEmail === "ymboutiqueshop@hotmail.com" &&
+    password === "Happy2026$"
+  ) {
+    setUnlocked(true);
+    localStorage.setItem("ym_admin_authed", "true");
+    localStorage.setItem("ym_admin_email", cleanEmail);
 
-    if (!supabaseEnabled) {
-      alert('Supabase is not connected, so email 2FA cannot send. Add Supabase env values or set VITE_ADMIN_REQUIRE_2FA=false for local-only testing.');
-      return;
-    }
+    log(`Admin login: ${cleanEmail} (2FA bypassed)`);
 
-    setBusy(true);
-    try {
-      const { error } = await supabase.auth.signInWithOtp({
-        email: email.trim(),
-        options: { shouldCreateUser: false },
-      });
-      if (error) throw error;
-      setOtpSent(true);
-      alert('Security code sent to your admin email.');
-    } catch (err) {
-      alert(`Could not send 2FA code: ${err.message}`);
-    } finally {
-      setBusy(false);
-    }
-  }
+    return;
+  }
+
+  alert("Invalid admin email or password.");
+}
 
   async function verifyCode() {
     if (!credentialsOk()) return alert('Wrong email or password');
